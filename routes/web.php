@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function () {
+	Route::auth();
+	Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+});
